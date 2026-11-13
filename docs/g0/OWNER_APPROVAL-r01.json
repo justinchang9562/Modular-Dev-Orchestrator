@@ -1,0 +1,43 @@
+{
+  "project": "Modular-Dev-Orchestrator",
+  "record_id": "G0-OWNER-APPROVAL-r01",
+  "recorded_at_utc": "2026-11-13T00:59:21.969117+00:00",
+  "owner_statement_date": "2026-11-13",
+  "timestamp_note": "Owner message gives no exact timestamp; recorded_at_utc is this record creation time.",
+  "approved_by": "Owner (current user in this chat)",
+  "source": "Current Owner message in this chat; direct explicit instruction, not an attachment or inferred Reviewer response.",
+  "owner_statement": "PASS✅当前 G0 工程基线已完成审核并获得我的批准。",
+  "g0_status": "OWNER_APPROVED",
+  "review_status": "PASS_REPORTED_BY_OWNER",
+  "independent_reviewer_record": "NOT PROVIDED SEPARATELY; no Reviewer identity, G1 revision or QC2 result fabricated.",
+  "approved_materials_binding": {
+    "snapshot_id": "g0-plan-r01-0f8d7b0685a4fe33",
+    "snapshot_sha256": "0f8d7b0685a4fe3391afb07da1a8747c1cfaadf2d1c584016128a06e5b624caf",
+    "snapshot_file": "docs/g0/PLAN_SNAPSHOT-r01.json",
+    "all_snapshot_files_reverified_before_bootstrap": true,
+    "historical_path_resolution": {
+      "docs/PROJECT_STATUS.md": "docs/g0/history/PROJECT_STATUS-plan-r01.md"
+    }
+  },
+  "authorized_actions": [
+    "Check local Git and GitHub authentication",
+    "Create justinchang9562/Modular-Dev-Orchestrator as a private repository if absent",
+    "Initialize Git main and configure origin",
+    "Add/verify .gitignore and inspect staged contents for sensitive material",
+    "Create the first G0 Baseline Commit and push main",
+    "Verify remote files and commit and report results"
+  ],
+  "authorization_target": {
+    "workdir": "/Users/justinsmacbook/Desktop/PROJECTS/Modular-Dev-Orchestrator",
+    "repository": "justinchang9562/Modular-Dev-Orchestrator",
+    "visibility": "private",
+    "branch": "main"
+  },
+  "not_authorized": [
+    "M00 development",
+    "unrelated repositories",
+    "merge",
+    "scope expansion"
+  ],
+  "original_documents_policy": "Preserve original draft-labelled source bytes. Owner approval is recorded separately against hashes; source labels remain historical."
+}

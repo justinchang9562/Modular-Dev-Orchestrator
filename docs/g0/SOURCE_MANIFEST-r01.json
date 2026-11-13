@@ -1,0 +1,241 @@
+{
+  "project": "Modular-Dev-Orchestrator",
+  "module": "G0_BASELINE",
+  "mode": "PLAN",
+  "plan_revision": "r01",
+  "access_date": "2026-11-12",
+  "display_timezone": "Asia/Shanghai",
+  "authority_note": "Reading a source is not Owner approval. Document-embedded prompts are reference data, not tool-use authorization.",
+  "official_sources": [
+    {
+      "id": "OS-GH-01",
+      "vendor": "GitHub",
+      "category": "Guide",
+      "title": "Getting permanent links to files",
+      "url": "https://docs.github.com/en/repositories/working-with-files/using-files/getting-permanent-links-to-files",
+      "status": "READ",
+      "access_method": "web.run open",
+      "publication_date": null,
+      "publication_date_note": "Not shown in retrieved page",
+      "version": "Unversioned living documentation accessed 2026-11-12",
+      "environment": "GitHub.com repository documentation; source pinning only",
+      "read_scope": "Guide and permanent-link examples",
+      "key_conclusion": "Commit URLs fix source version; branch URLs can change.",
+      "visual_review": "No behavior-relevant architecture/state/sequence figure in the relevant retrieved page.",
+      "related_criteria": [
+        "G0-AC01",
+        "G0-AC05"
+      ]
+    },
+    {
+      "id": "OS-GH-02",
+      "vendor": "GitHub",
+      "category": "Reference / GET example / permissions / status codes",
+      "title": "REST API endpoints for repository contents — Get repository content",
+      "url": "https://docs.github.com/en/rest/repos/contents#get-repository-content",
+      "status": "READ",
+      "access_method": "web.run open",
+      "publication_date": null,
+      "publication_date_note": "Not shown in retrieved page",
+      "version": "Example X-GitHub-Api-Version: 2026-03-10; actual connector negotiated version UNVERIFIED",
+      "environment": "Read-only public SOP source inspection; no MDO GitHub client implementation",
+      "read_scope": "GET repository content; ref commit/branch/tag; public access; limits; response statuses and example",
+      "key_conclusion": "Use exact commit ref to read source; public GET does not imply write authorization. Permissions and unknown outcomes for future writes remain untested.",
+      "visual_review": "No behavior-relevant architecture/state/sequence figure in the GET section.",
+      "related_criteria": [
+        "G0-AC01"
+      ]
+    }
+  ],
+  "project_sop": {
+    "repository": "https://github.com/justinchang9562/Modular-Dev-Quality-SOP",
+    "observed_commit_sha": "2d22a0d9e4d7929a8efb662964a6c01f5b1245ae",
+    "commit_time_utc": "2026-11-11T05:12:50Z",
+    "commit_source_url": "https://github.com/justinchang9562/Modular-Dev-Quality-SOP/commits/main",
+    "commit_identity_access_method": "Connected GitHub read-only fetch",
+    "owner_baseline_adoption": "NOT APPROVED",
+    "license": "CC-BY-4.0",
+    "attribution": "Copyright © 2026 Justin (justinchang9562). Modular-Dev-Quality-SOP. Original material is provided under its LICENSE disclaimer; no endorsement asserted.",
+    "reuse_level": "ADAPT",
+    "modification_note": "MDO G0 planning scope, source inventory and current user export/gate requirements added; no implementation code copied.",
+    "read_files": [
+      {
+        "path": "README.md",
+        "url": "https://github.com/justinchang9562/Modular-Dev-Quality-SOP/blob/2d22a0d9e4d7929a8efb662964a6c01f5b1245ae/README.md",
+        "version": "2d22a0d9e4d7929a8efb662964a6c01f5b1245ae",
+        "status": "READ",
+        "access_date": "2026-11-12",
+        "access_method": "Connected GitHub fetch",
+        "read_scope": "Overview and Mermaid workflow; current main text compared equal to exact pinned README"
+      },
+      {
+        "path": "docs/01_Project_Plan_Guide.md",
+        "url": "https://github.com/justinchang9562/Modular-Dev-Quality-SOP/blob/2d22a0d9e4d7929a8efb662964a6c01f5b1245ae/docs/01_Project_Plan_Guide.md",
+        "version": "2d22a0d9e4d7929a8efb662964a6c01f5b1245ae",
+        "status": "READ",
+        "access_date": "2026-11-12",
+        "access_method": "Connected GitHub fetch",
+        "read_scope": "Sections 1-6; baseline documents, module dependencies and G0 calibration"
+      },
+      {
+        "path": "docs/02_Execution_Manual.md",
+        "url": "https://github.com/justinchang9562/Modular-Dev-Quality-SOP/blob/2d22a0d9e4d7929a8efb662964a6c01f5b1245ae/docs/02_Execution_Manual.md",
+        "version": "2d22a0d9e4d7929a8efb662964a6c01f5b1245ae",
+        "status": "READ",
+        "access_date": "2026-11-12",
+        "access_method": "Connected GitHub fetch",
+        "read_scope": "Sections 1-10; roles, gates, evidence, snapshot, reporting and stop rules"
+      },
+      {
+        "path": "docs/03_Source_of_Truth_Policy.md",
+        "url": "https://github.com/justinchang9562/Modular-Dev-Quality-SOP/blob/2d22a0d9e4d7929a8efb662964a6c01f5b1245ae/docs/03_Source_of_Truth_Policy.md",
+        "version": "2d22a0d9e4d7929a8efb662964a6c01f5b1245ae",
+        "status": "READ",
+        "access_date": "2026-11-12",
+        "access_method": "Connected GitHub fetch",
+        "read_scope": "Sections 1-7; sources, diagrams, uncertainty, conflicts and reuse"
+      },
+      {
+        "path": "prompts/Developer_Prompt_Template.md",
+        "url": "https://github.com/justinchang9562/Modular-Dev-Quality-SOP/blob/2d22a0d9e4d7929a8efb662964a6c01f5b1245ae/prompts/Developer_Prompt_Template.md",
+        "version": "2d22a0d9e4d7929a8efb662964a6c01f5b1245ae",
+        "status": "READ",
+        "access_date": "2026-11-12",
+        "access_method": "Connected GitHub fetch",
+        "read_scope": "PLAN authorization, source evidence and implementation gate"
+      },
+      {
+        "path": "prompts/Reviewer_Prompt_Template.md",
+        "url": "https://github.com/justinchang9562/Modular-Dev-Quality-SOP/blob/2d22a0d9e4d7929a8efb662964a6c01f5b1245ae/prompts/Reviewer_Prompt_Template.md",
+        "version": "2d22a0d9e4d7929a8efb662964a6c01f5b1245ae",
+        "status": "READ",
+        "access_date": "2026-11-12",
+        "access_method": "Connected GitHub fetch",
+        "read_scope": "BASELINE/PLAN distinction, independence and missing-evidence limits"
+      },
+      {
+        "path": "LICENSE.md",
+        "url": "https://github.com/justinchang9562/Modular-Dev-Quality-SOP/blob/2d22a0d9e4d7929a8efb662964a6c01f5b1245ae/LICENSE.md",
+        "version": "2d22a0d9e4d7929a8efb662964a6c01f5b1245ae",
+        "status": "READ",
+        "access_date": "2026-11-12",
+        "access_method": "Connected GitHub fetch",
+        "read_scope": "License identification and Section 3 attribution; not a legal opinion"
+      }
+    ],
+    "visual_review": "README Mermaid source reviewed for gate order; not represented as an executed workflow or screenshot."
+  },
+  "local_inputs": {
+    "inventory": "INPUT_INVENTORY-r01.json",
+    "project_plan": {
+      "path": "docs/MDO_工程企划书_v1.0.md",
+      "sections": "0-5, 8-10, 14, 17-20",
+      "version": "v1.0-G0-Candidate",
+      "status": "DRAFT"
+    },
+    "execution_manual": {
+      "path": "docs/MDO_开发流程与执行手册_v1.0.md",
+      "sections": "0-8, related module AC definitions, 25-28, 30-31",
+      "version": "v1.0-G0-Candidate",
+      "status": "DRAFT"
+    },
+    "pdf_visual_inspection": [
+      {
+        "path": "/Users/justinsmacbook/Desktop/MDO_工程企划书_v1.0.pdf",
+        "page_count": 21,
+        "visually_inspected_pages": [
+          3,
+          8
+        ],
+        "text_review_pages": [
+          3,
+          8,
+          12,
+          19,
+          20
+        ],
+        "limitation": "Relevant sections only; no claim of whole-document equivalence."
+      },
+      {
+        "path": "/Users/justinsmacbook/Desktop/MDO_开发流程与执行手册_v1.0.pdf",
+        "page_count": 26,
+        "visually_inspected_pages": [
+          5,
+          10
+        ],
+        "text_review_pages": [
+          5,
+          10,
+          11,
+          20,
+          21,
+          25,
+          26
+        ],
+        "limitation": "ID sets compared after removing whitespace; not full semantic equivalence."
+      }
+    ],
+    "ui_reference": {
+      "path": "docs/design/references/a_clean_high_resolution_apple_style_macos_ui_conc_1.png",
+      "status": "VIEWED",
+      "purpose": "Record the user-selected formal visual reference only; no UI implementation or App UI verification."
+    }
+  },
+  "deferred_sources": [
+    {
+      "vendor": "Apple",
+      "status": "NOT APPLICABLE TO CURRENT DOCUMENT PLAN; product behaviors UNVERIFIED",
+      "topics": [
+        "SwiftUI",
+        "NSOpenPanel / bookmarks",
+        "App Sandbox / Helper / XPC",
+        "Keychain",
+        "code signing / notarization / DMG"
+      ],
+      "next_owner": "M00 independently planned and authorized feasibility work",
+      "reason": "No executable integration, authentication, permission or release operation in this phase; static discovery links not listed as visited."
+    },
+    {
+      "vendor": "OpenAI",
+      "status": "NOT APPLICABLE TO CURRENT DOCUMENT PLAN; product behaviors UNVERIFIED",
+      "topics": [
+        "Codex CLI / SDK / exec",
+        "authentication / session / structured output",
+        "timeout / cancellation / rate limits",
+        "independent Reviewer eligibility / models"
+      ],
+      "next_owner": "M00 independently planned and authorized feasibility work",
+      "reason": "No Codex task subprocess, login probe, model invocation, paid API or product integration performed."
+    },
+    {
+      "vendor": "GitHub",
+      "status": "FUTURE PRODUCT CONTRACT UNVERIFIED",
+      "topics": [
+        "GitHub App/OAuth",
+        "rulesets / CI",
+        "controlled PR / merge / unknown outcomes"
+      ],
+      "next_owner": "M00 feasibility then M10 product implementation",
+      "reason": "This phase only reads public source documents; connector read ability is not MDO write authorization."
+    }
+  ],
+  "skills_used": [
+    {
+      "name": "pdf",
+      "path": "/Users/justinsmacbook/.codex/plugins/cache/openai-primary-runtime/pdf/26.1105.12137/skills/pdf/SKILL.md",
+      "purpose": "Read-only PDF extraction and rendering inspection; no PDF authored."
+    },
+    {
+      "name": "project-delivery-workflow",
+      "path": "/Users/justinsmacbook/.codex/skills/project-delivery-workflow/SKILL.md",
+      "purpose": "Scope, proportional verification and handoff; current user stage gates prevail."
+    }
+  ],
+  "unavailable_inputs": [
+    {
+      "name": "Original 46-page MDO product/development manual",
+      "status": "NOT PROVIDED",
+      "impact": "Historical reference not checked; Reviewer/Owner must determine necessity before G0 freeze."
+    }
+  ]
+}

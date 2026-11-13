@@ -1,0 +1,65 @@
+# macOS / Finder metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Local credentials and private runtime data
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+.netrc
+.npmrc
+auth.json
+credentials.json
+secrets.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+*.mobileprovision
+*.provisionprofile
+/.codex/
+/.mdo/
+/.mdo-review/
+/.local/
+/private/
+/secrets/
+/credentials/
+/logs/
+
+# Node / package-manager caches and build output
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/install-state.gz
+.cache/
+.next/
+.nuxt/
+.output/
+dist/
+build/
+coverage/
+.nyc_output/
+
+# Swift / Xcode build output and per-user state
+.build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+.swiftpm/xcode/package.xcworkspace/
+
+# Temporary and distributable artifacts; source evidence logs remain trackable
+/tmp/
+/temp/
+/artifacts/
+*.dmg
+*.pkg
+*.xcarchive/
+*.zip

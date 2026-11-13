@@ -1,0 +1,239 @@
+{
+  "project": "Modular-Dev-Orchestrator",
+  "module": "G0_BASELINE",
+  "phase": "PLAN",
+  "revision": "r01",
+  "recorded_at_utc": "2026-11-13T00:40:52.698180+00:00",
+  "display_timezone": "Asia/Shanghai",
+  "evidence_origin": "Executed by Developer tools in this chat; not independently rerun by Reviewer and not produced by a product Trusted Runner.",
+  "environment_note": "No tool versions selected as product minimum requirements.",
+  "gate_status": "G0 NOT APPROVED / G1 NOT PROVIDED / IMPLEMENTATION NOT APPROVED",
+  "checks": [
+    {
+      "id": "EV-G0-ENV",
+      "command": [
+        "uname",
+        "-m"
+      ],
+      "cwd": "/Users/justinsmacbook/Desktop/PROJECTS/Modular-Dev-Orchestrator",
+      "started_at_utc": "2026-11-13T00:40:50.962724+00:00",
+      "expected": "Apple Silicon architecture arm64; observation only, not minimum OS compatibility proof",
+      "actual": {
+        "exit_code": 0,
+        "stdout": "arm64\n",
+        "stderr": ""
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "EV-G0-OS",
+      "command": [
+        "sw_vers"
+      ],
+      "cwd": "/Users/justinsmacbook/Desktop/PROJECTS/Modular-Dev-Orchestrator",
+      "started_at_utc": "2026-11-13T00:40:50.967695+00:00",
+      "expected": "Capture real OS version without selecting the product minimum OS",
+      "actual": {
+        "exit_code": 0,
+        "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t27.2.1\nBuildVersion:\t\t26B131\n",
+        "stderr": ""
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "EV-G0-GIT",
+      "command": [
+        "git",
+        "rev-parse",
+        "--is-inside-work-tree"
+      ],
+      "cwd": "/Users/justinsmacbook/Desktop/PROJECTS/Modular-Dev-Orchestrator",
+      "started_at_utc": "2026-11-13T00:40:50.980897+00:00",
+      "expected": "Detect current repository availability; absence is a blocker, not a clean worktree",
+      "actual": {
+        "exit_code": 128,
+        "stdout": "",
+        "stderr": "fatal: not a git repository (or any of the parent directories): .git\n"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "EV-G0-INPUT-HASH",
+      "command": [
+        "python3",
+        "-c",
+        "from pathlib import Path\nimport json,hashlib\nroot=Path.cwd(); original=json.loads((root/\"docs/g0/INPUT_INVENTORY-r01.json\").read_text()); results=[]\nfor row in original[\"inputs\"]:\n if row[\"role\"]==\"metadata\": continue\n p=Path(row[\"path\"]); p=p if p.is_absolute() else root/p\n actual=hashlib.sha256(p.read_bytes()).hexdigest()\n results.append({\"path\":row[\"path\"],\"sha256\":actual,\"unchanged\":actual==row[\"sha256\"]})\nassert all(x[\"unchanged\"] for x in results), \"Original input changed\"\nprint(json.dumps(results,ensure_ascii=False))"
+      ],
+      "cwd": "/Users/justinsmacbook/Desktop/PROJECTS/Modular-Dev-Orchestrator",
+      "started_at_utc": "2026-11-13T00:40:50.996465+00:00",
+      "expected": "All five review inputs retain their original SHA-256",
+      "actual": {
+        "exit_code": 0,
+        "stdout": "[{\"path\": \"docs/MDO_工程企划书_v1.0.md\", \"sha256\": \"e2b2c31a97d0936829e7a2109b5181204c80350aae112235c80081d9be0e6bbf\", \"unchanged\": true}, {\"path\": \"docs/MDO_开发流程与执行手册_v1.0.md\", \"sha256\": \"023628c0960734c4e2df0202f42b67d33119a43e0cb86a3da8ac5a757a66e6fe\", \"unchanged\": true}, {\"path\": \"docs/design/references/a_clean_high_resolution_apple_style_macos_ui_conc_1.png\", \"sha256\": \"6135e92ce37ecda05f1cd63bc96584259aab844420bc20c8d249104df40af79c\", \"unchanged\": true}, {\"path\": \"/Users/justinsmacbook/Desktop/MDO_工程企划书_v1.0.pdf\", \"sha256\": \"8d476f4d78fa547edc9b674623b3fb20cd2df31dab18c17b18dd3b2e9a126b6a\", \"unchanged\": true}, {\"path\": \"/Users/justinsmacbook/Desktop/MDO_开发流程与执行手册_v1.0.pdf\", \"sha256\": \"fa2a129e23f19f2709f78fd242ab23b72f5d80961286e30326b244cdc1e53081\", \"unchanged\": true}]\n",
+        "stderr": ""
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "EV-G0-PDF-IDS",
+      "command": [
+        "python3",
+        "-c",
+        "from pathlib import Path\nfrom pypdf import PdfReader\nimport re,json\nrows=[]\nfor name in [\"MDO_工程企划书_v1.0\",\"MDO_开发流程与执行手册_v1.0\"]:\n rd=PdfReader(\"/Users/justinsmacbook/Desktop/\"+name+\".pdf\")\n md=Path(\"docs\",name+\".md\").read_text()\n pdf=\"\\n\".join(p.extract_text() or \"\" for p in rd.pages)\n pattern=r\"REQ-[A-Z]+-\\d{3}|AC-M\\d{2}-\\d{2}|G0-AC\\d{2}\"\n a=set(re.findall(pattern,re.sub(r\"\\s+\",\"\",md)))\n b=set(re.findall(pattern,re.sub(r\"\\s+\",\"\",pdf)))\n assert a==b, name+\": identifier mismatch\"\n rows.append({\"document\":name,\"pages\":len(rd.pages),\"identifier_count\":len(a),\"missing\":sorted(a-b),\"extra\":sorted(b-a)})\nprint(json.dumps({\"results\":rows,\"limitation\":\"Identifier equality after removing whitespace only; not whole-text or layout equivalence.\"},ensure_ascii=False))"
+      ],
+      "cwd": "/Users/justinsmacbook/Desktop/PROJECTS/Modular-Dev-Orchestrator",
+      "started_at_utc": "2026-11-13T00:40:51.049199+00:00",
+      "expected": "Normalized REQ/AC/G0-AC sets match within each PDF/Markdown pair; 21 and 26 PDF pages",
+      "actual": {
+        "exit_code": 0,
+        "stdout": "{\"results\": [{\"document\": \"MDO_工程企划书_v1.0\", \"pages\": 21, \"identifier_count\": 37, \"missing\": [], \"extra\": []}, {\"document\": \"MDO_开发流程与执行手册_v1.0\", \"pages\": 26, \"identifier_count\": 111, \"missing\": [], \"extra\": []}], \"limitation\": \"Identifier equality after removing whitespace only; not whole-text or layout equivalence.\"}\n",
+        "stderr": ""
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "EV-G0-REQ-DAG",
+      "command": [
+        "python3",
+        "-c",
+        "from pathlib import Path\nimport re,json\nplan=Path(\"docs/MDO_工程企划书_v1.0.md\").read_text(); manual=Path(\"docs/MDO_开发流程与执行手册_v1.0.md\").read_text()\nreqs=re.findall(r\"^\\| [^|]+ \\| (REQ-[A-Z]+-\\d{3}) \\| [^|]+ \\|$\",plan,re.M)\nassert len(reqs)==len(set(reqs))==37\nsec=manual.split(\"## 8. 唯一正式模块路线图 M00–M15\\n\",1)[1].split(\"## 9.\",1)[0]\nrows=[[v.strip() for v in line.strip(\"|\").split(\"|\")] for line in sec.splitlines() if re.match(r\"^\\| M\\d{2} \",line)]\nids=[row[0] for row in rows]; expected=[f\"M{i:02d}\" for i in range(16)]\nassert ids==expected\npsec=plan.split(\"## 18. 工程路线与责任映射（唯一正式路线）\",1)[1].split(\"## 19.\",1)[0]\npids=re.findall(r\"^\\| (M\\d{2}) \",psec,re.M)\nassert pids==expected\nedges={row[0]:re.findall(r\"M\\d{2}\",row[2]) for row in rows}\nactive=set(); done=set(); order=[]\ndef visit(n):\n assert n not in active, \"Dependency cycle\"\n if n in done:return\n active.add(n)\n for d in edges[n]:visit(d)\n active.remove(n);done.add(n);order.append(n)\nfor n in ids:visit(n)\nassert \"M10 | GitHub/CI/Merge/Post-Merge/G4\" in sec\nprint(json.dumps({\"requirement_count\":len(reqs),\"modules\":ids,\"dependency_edges\":edges,\"topological_order\":order,\"cycle\":False,\"limitation\":\"Checks original module tables and dependency graph, not semantic completeness or approved P0 classification.\"},ensure_ascii=False))"
+      ],
+      "cwd": "/Users/justinsmacbook/Desktop/PROJECTS/Modular-Dev-Orchestrator",
+      "started_at_utc": "2026-11-13T00:40:52.612755+00:00",
+      "expected": "37 unique REQ, same 16 Module IDs in both tables, explicit dependency graph acyclic; M10 retains delivery responsibilities",
+      "actual": {
+        "exit_code": 0,
+        "stdout": "{\"requirement_count\": 37, \"modules\": [\"M00\", \"M01\", \"M02\", \"M03\", \"M04\", \"M05\", \"M06\", \"M07\", \"M08\", \"M09\", \"M10\", \"M11\", \"M12\", \"M13\", \"M14\", \"M15\"], \"dependency_edges\": {\"M00\": [], \"M01\": [\"M00\"], \"M02\": [\"M01\"], \"M03\": [\"M02\"], \"M04\": [\"M03\"], \"M05\": [\"M04\"], \"M06\": [\"M05\"], \"M07\": [\"M06\"], \"M08\": [\"M07\"], \"M09\": [\"M08\"], \"M10\": [\"M09\"], \"M11\": [\"M05\", \"M10\"], \"M12\": [\"M04\", \"M09\", \"M11\"], \"M13\": [\"M10\", \"M12\"], \"M14\": [\"M11\", \"M12\", \"M13\"], \"M15\": [\"M14\"]}, \"topological_order\": [\"M00\", \"M01\", \"M02\", \"M03\", \"M04\", \"M05\", \"M06\", \"M07\", \"M08\", \"M09\", \"M10\", \"M11\", \"M12\", \"M13\", \"M14\", \"M15\"], \"cycle\": false, \"limitation\": \"Checks original module tables and dependency graph, not semantic completeness or approved P0 classification.\"}\n",
+        "stderr": ""
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "EV-G0-PLAN-STRUCTURE",
+      "command": [
+        "python3",
+        "-c",
+        "from pathlib import Path\nimport re,json\np=Path(\"docs/plans/G0_BASELINE_IMPLEMENTATION_PLAN-r01.md\"); t=p.read_text()\nsections=re.findall(r\"^## (\\d+)\\.\",t,re.M)\nassert sections==[str(i) for i in range(1,14)]\nassert all(f\"G0-AC{i:02d}\" in t for i in range(1,6))\nassert \"implementation NOT APPROVED\" in t\nassert t.rstrip().endswith(\"STOP。等待独立审核及适用 Owner 授权。\")\nprint(json.dumps({\"section_count\":len(sections),\"original_g0_ac_ids_preserved\":True,\"approval_not_invented\":True,\"stop_present\":True}))"
+      ],
+      "cwd": "/Users/justinsmacbook/Desktop/PROJECTS/Modular-Dev-Orchestrator",
+      "started_at_utc": "2026-11-13T00:40:52.655258+00:00",
+      "expected": "13 required plan sections; original G0 AC IDs, missing authorization and STOP explicitly recorded",
+      "actual": {
+        "exit_code": 0,
+        "stdout": "{\"section_count\": 13, \"original_g0_ac_ids_preserved\": true, \"approval_not_invented\": true, \"stop_present\": true}\n",
+        "stderr": ""
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "EV-G0-LINKS-JSON",
+      "command": [
+        "python3",
+        "-c",
+        "from pathlib import Path\nimport re,json\nfiles=[Path(\"docs/plans/G0_BASELINE_IMPLEMENTATION_PLAN-r01.md\"),Path(\"docs/PROJECT_STATUS.md\")]\nmissing=[]\nfor p in files:\n for link in re.findall(r\"\\[[^\\]]*\\]\\(([^)]+)\\)\",p.read_text()):\n  if \"://\" in link or link.startswith(\"#\"):continue\n  if not (p.parent/link.split(\"#\",1)[0]).exists() and not link.endswith(\"PLAN_SNAPSHOT-r01.json\"):missing.append({\"file\":str(p),\"link\":link})\nassert not missing, str(missing)\nfor p in Path(\"docs/g0\").glob(\"*.json\"):json.loads(p.read_text())\nprint(json.dumps({\"local_links_valid\":True,\"json_parse_valid\":True,\"snapshot_link_deferred_until_finalization\":True}))"
+      ],
+      "cwd": "/Users/justinsmacbook/Desktop/PROJECTS/Modular-Dev-Orchestrator",
+      "started_at_utc": "2026-11-13T00:40:52.699075+00:00",
+      "expected": "Local plan/status links resolve; JSON parses; final snapshot link is checked after snapshot creation",
+      "actual": {
+        "exit_code": 0,
+        "stdout": "{\"local_links_valid\": true, \"json_parse_valid\": true, \"snapshot_link_deferred_until_finalization\": true}\n",
+        "stderr": ""
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "EV-G0-PLAN-SECRET-SCAN",
+      "command": [
+        "python3",
+        "-c",
+        "from pathlib import Path\nimport re,json\npaths=[Path(\"docs/plans/G0_BASELINE_IMPLEMENTATION_PLAN-r01.md\"),Path(\"docs/PROJECT_STATUS.md\"),*Path(\"docs/g0\").glob(\"*.json\")]\npattern=re.compile(r\"sk-(?:proj-)?[A-Za-z0-9_-]{20,}|github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----\")\nhits=[]\nfor p in paths:\n if pattern.search(p.read_text()):hits.append(str(p))\nassert not hits, str(hits)\nprint(json.dumps({\"files_scanned\":len(paths),\"credential_pattern_hits\":0,\"limitation\":\"Heuristic scan of new plan documents only; does not establish absence of every secret type.\"}))"
+      ],
+      "cwd": "/Users/justinsmacbook/Desktop/PROJECTS/Modular-Dev-Orchestrator",
+      "started_at_utc": "2026-11-13T00:40:52.742379+00:00",
+      "expected": "No matching common credential/private-key patterns in newly generated PLAN files; no credential material read",
+      "actual": {
+        "exit_code": 0,
+        "stdout": "{\"files_scanned\": 5, \"credential_pattern_hits\": 0, \"limitation\": \"Heuristic scan of new plan documents only; does not establish absence of every secret type.\"}\n",
+        "stderr": ""
+      },
+      "result": "PASS"
+    }
+  ],
+  "initial_git_command_records": "INPUT_INVENTORY-r01.json -> git_checks (preserves failures and exit codes)",
+  "manual_inspections": [
+    {
+      "id": "EV-G0-PDF-VISUAL",
+      "actual_date": "2026-11-12",
+      "method": "pdftoppm -f PAGE -l PAGE -scale-to 1400 -singlefile -png INPUT_PDF OUTPUT_PREFIX; view_image on each rendered PNG",
+      "render_exit_code": 0,
+      "pages": [
+        {
+          "document": "MDO_工程企划书_v1.0.pdf",
+          "pages": [
+            3,
+            8
+          ]
+        },
+        {
+          "document": "MDO_开发流程与执行手册_v1.0.pdf",
+          "pages": [
+            5,
+            10
+          ]
+        }
+      ],
+      "observed": "Read document-control, trusted-control-plane diagram, G0 criteria and first roadmap page. Diagram routes UI through the trusted control plane to the limited execution plane.",
+      "limitation": "Read-only inspection of selected existing pages; intermediate PNGs were temporary and are not retained as App UI evidence."
+    },
+    {
+      "id": "EV-G0-DESIGN-VISUAL",
+      "actual_date": "2026-11-12",
+      "method": "view_image on exact user reference PNG",
+      "observed": "Native macOS window/sidebar, white/light gray surfaces, black text and system-blue controls; overview, new-project and run-detail mockups.",
+      "limitation": "Concept image viewed; no running App, navigation, permission, accessibility or runtime state checks performed."
+    }
+  ],
+  "not_run_or_not_applicable": [
+    {
+      "item": "Canonical baseline / proposed ADR / full traceability / P0 semantic validation",
+      "status": "NOT RUN",
+      "reason": "Future G0 document preparation depends on plan review and same-version Owner authorization."
+    },
+    {
+      "item": "Product Unit / Property / Contract / Integration / Security Negative / Failure Injection / E2E / Release",
+      "status": "NOT APPLICABLE",
+      "reason": "PLAN-only documentation and research; no executable product code or integration modified."
+    },
+    {
+      "item": "App UI Verification",
+      "status": "NOT APPLICABLE",
+      "reason": "No UI code or App created/modified; inspecting a reference image is not App verification."
+    },
+    {
+      "item": "IMPLEMENT QC1 / G2 / independent QC2",
+      "status": "NOT RUN",
+      "reason": "Implementation/review phases not entered; no PASS claimed."
+    },
+    {
+      "item": "Review Bundle ZIP",
+      "status": "NOT APPLICABLE",
+      "reason": "PLAN is exempt under the current user request; no IMPLEMENT/FIX delivery occurred."
+    }
+  ],
+  "limitations": [
+    "SOP read access does not approve adoption of its commit.",
+    "No repository Base/HEAD exists; Git classification and cumulative Git diff unavailable.",
+    "No authentication, signed helper, sandbox, paid model API or GitHub write operation was tested.",
+    "A successful document check cannot satisfy G0/G1/QC2 or Owner approval."
+  ],
+  "all_executed_checks_passed": true,
+  "verification_environment": {
+    "machine": "arm64",
+    "macos_version": "27.2.1",
+    "python": "3.13.7",
+    "pypdf": "6.12.1",
+    "git": "git version 2.49.0",
+    "scope": "Read-only research / new PLAN documentation only"
+  }
+}

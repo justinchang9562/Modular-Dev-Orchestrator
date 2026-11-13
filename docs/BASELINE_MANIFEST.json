@@ -1,0 +1,75 @@
+{
+  "project": "Modular-Dev-Orchestrator",
+  "baseline_id": "G0_OWNER_APPROVED-r01",
+  "status": "OWNER_APPROVED_AS_PROVIDED",
+  "recorded_at_utc": "2026-11-13T00:59:21.969117+00:00",
+  "approved_by": "Owner (current user in this chat)",
+  "approved_at": "2026-11-13",
+  "approval_timestamp_precision": "date only; source message has no exposed timestamp",
+  "approval_record": "docs/g0/OWNER_APPROVAL-r01.json",
+  "review_result": "PASS_REPORTED_BY_OWNER; original independent review not supplied separately",
+  "project_plan_path": "docs/MDO_工程企划书_v1.0.md",
+  "project_plan_version": "v1.0-G0-Candidate (original label retained; exact bytes Owner-approved here)",
+  "project_plan_sha256": "e2b2c31a97d0936829e7a2109b5181204c80350aae112235c80081d9be0e6bbf",
+  "execution_manual_path": "docs/MDO_开发流程与执行手册_v1.0.md",
+  "execution_manual_version": "v1.0-G0-Candidate (original label retained; exact bytes Owner-approved here)",
+  "execution_manual_sha256": "023628c0960734c4e2df0202f42b67d33119a43e0cb86a3da8ac5a757a66e6fe",
+  "sop_commit_sha": "2d22a0d9e4d7929a8efb662964a6c01f5b1245ae",
+  "module_roadmap_revision": "Execution manual v1.0-G0-Candidate section 8, M00-M15; embedded table, no standalone canonical file exists",
+  "source_snapshot_id": "g0-plan-r01-0f8d7b0685a4fe33",
+  "source_snapshot_sha256": "0f8d7b0685a4fe3391afb07da1a8747c1cfaadf2d1c584016128a06e5b624caf",
+  "source_snapshot_file_sha256": "e402576fc530ae6e50574d2873a7339f3738ca18cd8ab5be0aac9ca46888f8f9",
+  "source_files": [
+    {
+      "role": "unchanged_reference_input",
+      "path": "/Users/justinsmacbook/Desktop/MDO_工程企划书_v1.0.pdf",
+      "bytes": 994910,
+      "sha256": "8d476f4d78fa547edc9b674623b3fb20cd2df31dab18c17b18dd3b2e9a126b6a",
+      "storage": "external_reference_not_uploaded"
+    },
+    {
+      "role": "unchanged_reference_input",
+      "path": "/Users/justinsmacbook/Desktop/MDO_开发流程与执行手册_v1.0.pdf",
+      "bytes": 947191,
+      "sha256": "fa2a129e23f19f2709f78fd242ab23b72f5d80961286e30326b244cdc1e53081",
+      "storage": "external_reference_not_uploaded"
+    },
+    {
+      "role": "unchanged_reference_input",
+      "path": "docs/MDO_工程企划书_v1.0.md",
+      "bytes": 45797,
+      "sha256": "e2b2c31a97d0936829e7a2109b5181204c80350aae112235c80081d9be0e6bbf",
+      "storage": "repository_baseline_input"
+    },
+    {
+      "role": "unchanged_reference_input",
+      "path": "docs/MDO_开发流程与执行手册_v1.0.md",
+      "bytes": 63764,
+      "sha256": "023628c0960734c4e2df0202f42b67d33119a43e0cb86a3da8ac5a757a66e6fe",
+      "storage": "repository_baseline_input"
+    },
+    {
+      "role": "unchanged_reference_input",
+      "path": "docs/design/references/a_clean_high_resolution_apple_style_macos_ui_conc_1.png",
+      "bytes": 1597600,
+      "sha256": "6135e92ce37ecda05f1cd63bc96584259aab844420bc20c8d249104df40af79c",
+      "storage": "repository_baseline_input"
+    }
+  ],
+  "historical_snapshot_path_resolution": {
+    "docs/PROJECT_STATUS.md": {
+      "archived_path": "docs/g0/history/PROJECT_STATUS-plan-r01.md",
+      "sha256": "c6205721c3c0d83505cbd7ae1b3a18d09df037f2e4aac298436d85dd7381a54f",
+      "reason": "Preserves the exact plan-stage status bytes after the Owner approval status update."
+    }
+  },
+  "unclosed_conditional_risks": [
+    "M00 must verify minimum OS/tool versions, Reviewer eligibility, helper/file authorization and signing/notarization.",
+    "Standard canonical documentation paths, proposed ADR files and explicit P0 traceability are still absent; Owner approval does not fabricate these artifacts.",
+    "Historical 46-page product manual was not supplied.",
+    "No M00 implementation or paid API usage is authorized by this bootstrap operation."
+  ],
+  "git_binding": "The initial main commit containing this manifest is the Git baseline; its SHA is reported after commit creation to avoid self-reference.",
+  "privacy_note": "Desktop PDF files are external read-only references. Their hashes are recorded but their bytes are not added to this repository.",
+  "self_hash_policy": "This manifest does not embed its own checksum. Git commit/tree bind its actual bytes."
+}

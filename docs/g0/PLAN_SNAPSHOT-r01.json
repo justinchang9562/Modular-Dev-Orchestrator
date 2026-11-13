@@ -1,0 +1,96 @@
+{
+  "project": "Modular-Dev-Orchestrator",
+  "module": "G0_BASELINE",
+  "phase": "PLAN",
+  "plan_revision": "r01",
+  "created_at_utc": "2026-11-13T00:41:47.130981+00:00",
+  "display_timezone": "Asia/Shanghai",
+  "snapshot_id": "g0-plan-r01-0f8d7b0685a4fe33",
+  "snapshot_sha256": "0f8d7b0685a4fe3391afb07da1a8747c1cfaadf2d1c584016128a06e5b624caf",
+  "algorithm": "SHA-256 of the UTF-8 JSON serialization of files, sorted lexically by path, ensure_ascii=false, sort_keys=true, separators=(comma,colon), no trailing newline. This file is excluded to avoid self-reference.",
+  "files": [
+    {
+      "role": "unchanged_reference_input",
+      "path": "/Users/justinsmacbook/Desktop/MDO_工程企划书_v1.0.pdf",
+      "bytes": 994910,
+      "sha256": "8d476f4d78fa547edc9b674623b3fb20cd2df31dab18c17b18dd3b2e9a126b6a"
+    },
+    {
+      "role": "unchanged_reference_input",
+      "path": "/Users/justinsmacbook/Desktop/MDO_开发流程与执行手册_v1.0.pdf",
+      "bytes": 947191,
+      "sha256": "fa2a129e23f19f2709f78fd242ab23b72f5d80961286e30326b244cdc1e53081"
+    },
+    {
+      "role": "unchanged_reference_input",
+      "path": "docs/MDO_工程企划书_v1.0.md",
+      "bytes": 45797,
+      "sha256": "e2b2c31a97d0936829e7a2109b5181204c80350aae112235c80081d9be0e6bbf"
+    },
+    {
+      "role": "unchanged_reference_input",
+      "path": "docs/MDO_开发流程与执行手册_v1.0.md",
+      "bytes": 63764,
+      "sha256": "023628c0960734c4e2df0202f42b67d33119a43e0cb86a3da8ac5a757a66e6fe"
+    },
+    {
+      "role": "plan_review_object",
+      "path": "docs/PROJECT_STATUS.md",
+      "bytes": 3443,
+      "sha256": "c6205721c3c0d83505cbd7ae1b3a18d09df037f2e4aac298436d85dd7381a54f"
+    },
+    {
+      "role": "unchanged_reference_input",
+      "path": "docs/design/references/a_clean_high_resolution_apple_style_macos_ui_conc_1.png",
+      "bytes": 1597600,
+      "sha256": "6135e92ce37ecda05f1cd63bc96584259aab844420bc20c8d249104df40af79c"
+    },
+    {
+      "role": "plan_review_object",
+      "path": "docs/g0/INPUT_INVENTORY-r01.json",
+      "bytes": 20907,
+      "sha256": "6182629cdf916ea8616855bded814e87446a904bdb3c8e0d5ebca463748bb665"
+    },
+    {
+      "role": "plan_review_object",
+      "path": "docs/g0/PLAN_EVIDENCE-r01.json",
+      "bytes": 15533,
+      "sha256": "6d4c758c75c9af6ae32ff9fab9047ffcbc3616df2cfb0c9c0fcc442d1acc73e3"
+    },
+    {
+      "role": "plan_review_object",
+      "path": "docs/g0/SOURCE_MANIFEST-r01.json",
+      "bytes": 10660,
+      "sha256": "28ac8fcc822719dae62dda9fcdb68d777c73c67bb0457da9490952a774111bfb"
+    },
+    {
+      "role": "plan_review_object",
+      "path": "docs/plans/G0_BASELINE_IMPLEMENTATION_PLAN-r01.md",
+      "bytes": 26371,
+      "sha256": "d2106acf2e07f56c84d2e48b11db5cc1c3931a22a764f38fe90668d402e50f77"
+    }
+  ],
+  "exclusions": [
+    "This PLAN_SNAPSHOT-r01.json itself",
+    "Finder .DS_Store metadata (inventoried at start, not a review object)",
+    "Temporary extraction/rendering intermediates",
+    "Personal knowledge-base contents and unrelated projects"
+  ],
+  "binding_limitations": [
+    "This is a PLAN delivery content snapshot, not a Git commit, approval, G0 baseline manifest or IMPLEMENT/FIX Review Bundle.",
+    "External reference PDFs remain at their original absolute paths; their hashes are bound, but this is not a portable ZIP payload."
+  ],
+  "git": {
+    "branch": null,
+    "base_commit": null,
+    "head_commit": null,
+    "status": "NOT_A_GIT_REPOSITORY"
+  },
+  "approval": {
+    "G0": "NOT APPROVED",
+    "G1": "NOT PROVIDED",
+    "G3": "NOT PROVIDED",
+    "implementation": "NOT APPROVED"
+  },
+  "sop_candidate_commit": "2d22a0d9e4d7929a8efb662964a6c01f5b1245ae"
+}
